@@ -1,0 +1,7 @@
+*.log
+*~
+.bunny/
+.swival/
+dist/
+node_modules/
+tmp/

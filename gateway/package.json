@@ -1,0 +1,11 @@
+{
+  "name": "x402-gateway",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "check": "deno check src/main.ts",
+    "build": "mkdir -p dist && deno run -A build.mjs",
+    "dev": "deno run -A src/main.ts"
+  }
+}

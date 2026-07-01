@@ -1,11 +1,43 @@
 {
-  "name": "x402-tools",
+  "name": "bunny-x402-cli",
   "version": "0.1.0",
+  "description": "Command-line x402 client for testing payment gateways: create throwaway wallets, check balances, decode the protocol headers, verify a signature without spending, and run the full pay-and-settle flow. Chain, token, and facilitator agnostic.",
   "type": "module",
-  "private": true,
+  "author": "Frank Denis <github@pureftpd.org>",
+  "license": "MIT",
+  "homepage": "https://github.com/dip-proto/x402#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dip-proto/x402.git",
+    "directory": "tools"
+  },
+  "bugs": {
+    "url": "https://github.com/dip-proto/x402/issues"
+  },
+  "keywords": [
+    "x402",
+    "402",
+    "payment-required",
+    "cli",
+    "stablecoin",
+    "usdc",
+    "viem",
+    "evm",
+    "payments",
+    "web3"
+  ],
   "bin": {
     "x402": "./x402.ts"
   },
+  "engines": {
+    "bun": ">=1.0.0"
+  },
+  "files": [
+    "x402.ts",
+    "config.ts",
+    "README.md",
+    "LICENSE"
+  ],
   "dependencies": {
     "@x402/core": "^2",
     "@x402/evm": "^2",

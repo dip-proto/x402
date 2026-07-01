@@ -7,7 +7,7 @@
  * verify a payment against a facilitator without spending, and run the full
  * pay-and-settle flow end to end.
  *
- * Nothing here is tied to a specific chain, token, or facilitator — pass
+ * Nothing here is tied to a specific chain, token, or facilitator; pass
  * --network / --token / --facilitator to point it anywhere.
  *
  *   bun x402.ts wallet new payer
@@ -288,7 +288,7 @@ async function cmdVerify(args: Args): Promise<void> {
     console.log(`  network: ${first.network}`);
   }
 
-  // Sign with the real v2 client, but stop at /verify — no settlement, no spend.
+  // Sign with the real v2 client, but stop at /verify: no settlement, no spend.
   const paymentPayload = await client.createPaymentPayload(paymentRequired as any);
 
   const res = await fetch(`${facilitator}/verify`, {
@@ -305,7 +305,7 @@ async function cmdVerify(args: Args): Promise<void> {
   console.log(JSON.stringify(verdict, null, 2));
   console.log(
     verdict.isValid
-      ? `\nSignature VALID — payer ${verdict.payer} is authorized to pay. (No funds moved.)`
+      ? `\nSignature VALID: payer ${verdict.payer} is authorized to pay. (No funds moved.)`
       : `\nNot valid: ${verdict.invalidReason ?? verdict.invalidMessage}`,
   );
 }
@@ -350,7 +350,7 @@ async function cmdPay(args: Args): Promise<void> {
       console.log(`\nOn-chain tx: ${net.explorer}/tx/${receipt.transaction}`);
     }
   } else {
-    console.log("\n(no PAYMENT-RESPONSE header — payment may not have settled)");
+    console.log("\n(no PAYMENT-RESPONSE header; payment may not have settled)");
   }
   console.log("\nResponse body:");
   console.log(body.slice(0, 2000));

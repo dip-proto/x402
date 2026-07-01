@@ -21,7 +21,7 @@ export interface NetworkInfo {
 }
 
 /**
- * A small registry of networks. The tooling is not tied to any single one —
+ * A small registry of networks. The tooling is not tied to any single one;
  * pass --network to target another, and --token to use a different asset.
  * The x402 protocol itself is currency-agnostic; this just gives friendly
  * defaults for the testnets people actually demo on.
@@ -103,6 +103,6 @@ export function resolveNetwork(name?: string): NetworkInfo {
 export const DEFAULT_FACILITATOR =
   process.env.X402_FACILITATOR_URL ?? "https://x402.org/facilitator";
 
-/** Where test wallets are stored. Testnet keys only — never real funds. */
+/** Where test wallets are stored. Testnet keys only, never real funds. */
 export const KEYSTORE =
   process.env.X402_KEYSTORE ?? new URL("../tmp/wallets.json", import.meta.url).pathname;

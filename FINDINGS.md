@@ -1,4 +1,4 @@
-# x402 v2 — the facts I built against
+# x402 v2: the facts I built against
 
 Notes I gathered while wiring this up, mostly by reading the real `@x402/core`
 source rather than trusting docs, because the wire format changed between v1
@@ -16,7 +16,7 @@ targets v2.
 Types come straight from `@x402/core` (`PaymentRequirements`, `PaymentRequired`,
 `PaymentPayload`, `Verify/SettleRequest`, `SettleResponse`).
 
-### The 402 challenge — `PaymentRequired`
+### The 402 challenge: `PaymentRequired`
 
 The important gotcha: **v2 carries the challenge in a response HEADER, not the
 body.** The client calls `getHeader("PAYMENT-REQUIRED")` first and only falls
@@ -43,7 +43,7 @@ PAYMENT-REQUIRED: <base64(JSON(PaymentRequired))>
       "scheme": "exact",
       "network": "eip155:84532",   // CAIP-2
       "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
-      "amount": "10000",            // atomic units — field is `amount`, not `maxAmountRequired`
+      "amount": "10000",            // atomic units, field is `amount`, not `maxAmountRequired`
       "payTo": "0x…",
       "maxTimeoutSeconds": 120,
       "extra": { "name": "USDC", "version": "2" }  // EIP-712 domain of the token
@@ -52,7 +52,7 @@ PAYMENT-REQUIRED: <base64(JSON(PaymentRequired))>
 }
 ```
 
-### The paid request — `PaymentPayload`
+### The paid request: `PaymentPayload`
 
 Client re-sends with header **`PAYMENT-SIGNATURE`** = `base64(JSON(PaymentPayload))`
 (v1 used `X-PAYMENT`). Decoded:
@@ -92,7 +92,7 @@ On the paid 200 response the server sets header **`PAYMENT-RESPONSE`** =
 ### Encoding
 
 Plain base64 of `JSON.stringify(...)` (`safeBase64Encode`). No base64url, no
-bigint quirks — amounts/timestamps are decimal strings already.
+bigint quirks: amounts/timestamps are decimal strings already.
 
 ## EVM signing (facilitator's job, not ours)
 
@@ -100,7 +100,7 @@ Still EIP-3009 `TransferWithAuthorization`, EIP-712. Base Sepolia USDC domain
 (verified on-chain): `name:"USDC"`, `version:"2"`, `chainId:84532`,
 `verifyingContract:0x036CbD53842c5426634e7929541eC2318f3dCF7e`. chainId is parsed
 from the CAIP-2 id (`eip155:84532` → 84532). In the exact scheme the **payer
-needs only the token, never gas** — the facilitator submits the transfer.
+needs only the token, never gas**; the facilitator submits the transfer.
 
 ## Runtime facts
 

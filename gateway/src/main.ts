@@ -124,7 +124,7 @@ const PROTECT_PATHS = (env("X402_PROTECT_PATHS") ?? "")
  * Build the list of accepted payment requirements.
  *
  * Prefers a full JSON array in X402_ACCEPTS so an operator can offer several
- * chains / tokens / currencies at once — the payer picks one. Falls back to a
+ * chains / tokens / currencies at once; the payer picks one. Falls back to a
  * single requirement assembled from individual variables for convenience.
  * Nothing here assumes a particular asset or network.
  */
@@ -179,7 +179,7 @@ function resourceInfo(url: URL): ResourceInfo {
 }
 
 // ----------------------------------------------------------------------------
-// Header encoding — byte-for-byte identical to @x402/core's helpers.
+// Header encoding, byte-for-byte identical to @x402/core's helpers.
 // ----------------------------------------------------------------------------
 
 /** base64(JSON(value)); matches @x402/core safeBase64Encode. */

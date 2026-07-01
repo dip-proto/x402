@@ -1,11 +1,48 @@
 {
-  "name": "x402-gateway",
+  "name": "bunny-x402",
   "version": "0.1.0",
+  "description": "Config-driven x402 (HTTP 402 Payment Required) paywall for Bunny.net Edge Scripting. Put any website behind a pay-per-request stablecoin paywall without touching the origin.",
   "type": "module",
-  "private": true,
+  "author": "Frank Denis <github@pureftpd.org>",
+  "license": "MIT",
+  "homepage": "https://github.com/dip-proto/x402#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dip-proto/x402.git",
+    "directory": "gateway"
+  },
+  "bugs": {
+    "url": "https://github.com/dip-proto/x402/issues"
+  },
+  "keywords": [
+    "x402",
+    "402",
+    "payment-required",
+    "paywall",
+    "bunny",
+    "bunnycdn",
+    "bunny.net",
+    "edge",
+    "edge-scripting",
+    "reverse-proxy",
+    "stablecoin",
+    "usdc",
+    "micropayments",
+    "web3"
+  ],
+  "main": "dist/index.js",
+  "files": [
+    "src/",
+    "dist/",
+    "build.mjs",
+    "deno.json",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "check": "deno check src/main.ts",
     "build": "mkdir -p dist && deno run -A build.mjs",
-    "dev": "deno run -A src/main.ts"
+    "dev": "deno run -A src/main.ts",
+    "prepack": "mkdir -p dist && deno run -A build.mjs"
   }
 }

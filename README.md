@@ -22,7 +22,7 @@ curl -i https://x402-gateway-l130t.bunny.run/
 
 Every other path costs 0.01 test USDC and, once paid, comes straight from example.com.
 
-## Protect your own site, step by step
+## Quickstart
 
 ### Dependencies
 
